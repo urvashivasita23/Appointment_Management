@@ -1,0 +1,20 @@
+<h5>Search Test</h5>
+<div>
+    <%= form_tag admin_patients_path, :method => 'get' do %>
+        <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "Search" %>
+    <% end %>
+</div>
+
+<% @users.each do |user| %>
+    <table class="highlight">
+        <thead>
+        
+        <tr> <th> Name </th> </tr>
+        </thead>
+        <tbody>
+            <td> <%= user.firstname %> </td>
+        </tbody>
+    </table>
+    <%= paginate @users %>
+    <% end %>
