@@ -1,0 +1,144 @@
+@import "simple_calendar";
+@import "materialize";
+
+@charset "UTF-8";
+
+// Color
+@import "materialize/components/color-variables";
+@import "materialize/components/color-classes";
+
+.nav-wrapper {
+  @extend .blue,
+  .darken-1;
+}
+
+.page-footer {
+  @extend .blue,
+  .darken-4;
+}
+
+// Variables;
+@import "materialize/components/variables";
+
+// Reset
+@import "materialize/components/normalize";
+
+// materialize/components
+@import "materialize/components/global";
+
+@import "materialize/components/badges";
+@import "materialize/components/icons-material-design";
+@import "materialize/components/grid";
+@import "materialize/components/navbar";
+@import "materialize/components/typography";
+@import "materialize/components/transitions";
+@import "materialize/components/cards";
+
+// Media Query Ranges
+$small-screen-up: 601px !default;
+$medium-screen-up: 993px !default;
+$large-screen-up: 1201px !default;
+$small-screen: 600px !default;
+$medium-screen: 992px !default;
+$large-screen: 1200px !default;
+
+$medium-and-up: "only screen and (min-width : #{$small-screen-up})" !default;
+$large-and-up: "only screen and (min-width : #{$medium-screen-up})" !default;
+$small-and-down: "only screen and (max-width : #{$small-screen})" !default;
+$medium-and-down: "only screen and (max-width : #{$medium-screen})" !default;
+$medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width : #{$medium-screen})" !default;
+
+@mixin column-count($ct) {
+  -webkit-column-count: $ct;
+  -moz-column-count: $ct;
+  column-count: $ct;
+}
+
+.cards-container {
+  column-break-inside: avoid;
+  background-color: #91d2d8;
+
+  .card {
+    display: inline-block;
+    overflow: visible;
+  }
+}
+
+@media #{$small-and-down} {
+  .cards-container {
+    @include column-count(1);
+  }
+}
+
+@media #{$medium-and-up} {
+  .cards-container {
+    @include column-count(2);
+  }
+}
+
+@media #{$large-and-up} {
+  .cards-container {
+    @include column-count(3);
+  }
+}
+
+/// Styles for demo
+.text-center {
+  text-align: center;
+}
+
+@import "materialize/components/toast";
+@import "materialize/components/tabs";
+@import "materialize/components/tooltip";
+@import "materialize/components/buttons";
+
+.btn,
+.btn-large {
+  background-color: #388087 !important;
+  color: rgb(255, 250, 250);
+}
+
+.nav-wrapper{
+  background-color: #388087  !important;
+}
+.page-footer{
+  background-color: #388087  !important;
+}
+.pagination{
+  background-color: #64a6ac !important;
+}
+
+@import "materialize/components/dropdown";
+@import "materialize/components/waves";
+@import "materialize/components/modal";
+@import "materialize/components/collapsible";
+@import "materialize/components/chips";
+@import "materialize/components/materialbox";
+@import "materialize/components/forms/forms";
+@import "materialize/components/table_of_contents";
+@import "materialize/components/sidenav";
+@import "materialize/components/preloader";
+@import "materialize/components/slider";
+@import "materialize/components/carousel";
+@import "materialize/components/tapTarget";
+@import "materialize/components/pulse";
+@import "materialize/components/datepicker";
+@import "materialize/components/timepicker";
+
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+html,
+body,
+.my-wrapper {
+  height: 100%;
+}
