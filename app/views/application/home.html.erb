@@ -1,0 +1,11 @@
+<div class="center-align">
+    <div class="valign-wrapper" style="min-height: 550px; height: 100%;">
+        <div style="width:100%;">
+            <% if !logged_in? %>
+                <%= image_tag(ActionController::Base.helpers.asset_path("Download.png"), style: "max-width: 50%; height: auto;") %>
+                   
+                <br><br><br>
+            <% end %>
+        </div>
+    </div>
+</div>

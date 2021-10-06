@@ -1,0 +1,32 @@
+<nav>
+    <div class="nav-wrapper">
+        <a class="brand-logo center">Medi Care</a>
+        <a href="#" class="button-collapse"><i class="material-icons">Menu</i></a>
+        
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <% if logged_in? && current_patient %>
+                <li><%= link_to "Home", patient_path(current_patient), class: "waves-effect waves-light btn-flat white-text" %></li>
+                <li><%= link_to "Appointment", patient_appointments_path(current_patient, current_patient.appointments), class: "waves-effect waves-light btn-flat white-text" %></li>
+                <li><%= link_to "Doctors", doctors_path, class: "waves-effect waves-light btn-flat white-text" %></li>
+                <li><%= link_to "Profile", user_path(session[:user_id]), class: "waves-effect waves-light btn-flat white-text" %></li>
+                <li><%= button_to "Log Out", logout_path, method: "delete", class: "waves-effect waves-light btn-flat white-text" %></li>
+
+            <% elsif logged_in? && current_doctor %>
+                <li><%= link_to "Home", doc_users_path, class: "waves-effect waves-light btn-flat white-text" %></li>
+                <li><%= link_to "Profile", doc_user_path(current_user.id), class: "waves-effect waves-light btn-flat white-text" %></li>
+                <li><%= button_to "Log Out", logout_path, method: "delete", class: "waves-effect waves-light btn-flat white-text" %></li>
+
+            <% elsif logged_in? && current_user.admin == true %>
+                <li><%= link_to "Home", admin_users_path, class: "waves-effect waves-light btn-flat white-text" %></li>
+                <li><%= link_to "Doctors", doctors_path, class: "waves-effect waves-light btn-flat white-text" %></li>
+                <li><%= link_to "Profile", user_path(current_user.id), class: "waves-effect waves-light btn-flat white-text" %></li>
+                <li><%= button_to "Log Out", logout_path, method: "delete", class: "waves-effect waves-light btn-flat white-text" %></li>
+                
+            <% else %>
+                <li><%= link_to "Home", root_path, class: "waves-effect waves-light btn-flat white-text" %></li>
+                <li><%= link_to "Login", signin_path, class: "waves-effect waves-light btn-flat white-text" %></li>
+                <li><%= link_to "Sign Up", new_user_path, class: "waves-effect waves-light btn-flat white-text" %></li>
+            <% end %>
+        </ul>
+    </div>
+</nav>

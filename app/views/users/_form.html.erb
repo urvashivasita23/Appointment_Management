@@ -1,0 +1,41 @@
+<%= form_with model: @user, local: true do |f| %>
+    <div>
+        <%= f.label :firstname, "First Name" %>
+        <%= f.text_field :firstname %>
+    </div>
+
+    <div>
+        <%= f.label :lastname, "Last Name" %>
+        <%= f.text_field :lastname %>
+    </div>
+
+    <div>
+        <%= f.label :username %>
+        <%= f.text_field :username %>
+    </div>
+
+    <div>
+        <%= f.label :email %>
+        <%= f.email_field :email %>
+    </div>
+
+    <div>
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+    </div>
+
+    <div>
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation %>
+    </div>
+
+    <br>
+
+    <br><br>
+
+    <div>
+        <a class="waves-effect waves-light btn "><%= f.submit %></a>
+    </div>
+<% end %>
+
+<br>

@@ -1,0 +1,47 @@
+<% if @appointment.appointment > DateTime.now %>
+    <h4>You upcoming virtual appointment</h4>
+<% else %>
+    <h4>Your past visit</h4>
+<% end %>
+
+<h6><b><%= appointment_time(@appointment) %></b></h6>
+<br>
+<h6><b><%= @appointment.doctor_specialty %></b></h6>
+<h6><b>Doctor: </b><%= @appointment.doctor_fullname %></h6>
+<h6><b>Affiliated Hospital: </b><%= @appointment.doctor_hospital %></h6>
+
+<br>
+
+<% if @appointment.test_results %>
+    <h6><b>Test Result: </b></h6>
+    <p><%= @appointment.test_results %></p>
+<% else %>
+    <p><i>Test result pending.</i></p>
+<% end %>
+
+<br>
+
+<% if @appointment.treatment_plans %>
+    <h6><b>Treatment Plans: </b></h6>
+    <p><%= @appointment.treatment_plans %></p>
+<% else %>
+    <p><i>Treatment plans pending.</i></p>
+<% end %>
+
+<br>
+
+<% if @appointment.prescriptions %>
+    <h6><b>Prescriptions: </b></h6>
+    <p><%= @appointment.prescriptions %></p>
+<% else %>
+    <p><i>Prescriptions on pending.</i></p>
+<% end %>
+
+<br>
+
+<% if @appointment.billing %>
+    <h6><b>Amount Due: </b></h6>
+    <p>$<%= @appointment.billing %></p>
+<% else %>
+    <p><i>Billing pending.</i></p>
+<% end %>

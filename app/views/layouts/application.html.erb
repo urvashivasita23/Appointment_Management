@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PlanMyMdVisit</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=0.9">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <script>
+      $(document).ready(function () {
+        $(".button-collapse").sideNav();
+      });
+    </script>
+  </head>
+
+  <body>
+    <%= render 'layouts/navbar' %>
+  
+    <br>
+
+    <main>
+      <% flash.each do |type, msg| %>
+        <div class="container">
+          <div class="chip">
+            <%= msg %>
+            <i class="close material-icons">close</i>
+          </div>
+        </div>
+      <% end %>
+      
+      <div class="container">
+        <%= yield %>
+      </div>
+    </main>
+
+    <footer class="page-footer" >
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">Medi Care</h5>
+            <p class="grey-text text-lighten-4">Stay Safe || Wash Hands || Wear Mask || Repeat</p>
+          </div>
+
+          <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">Stay Connected</h5>
+            <ul>
+              <li><a class="grey-text text-lighten-3" target="blank">Medi Care Github</a></li>
+              <li><a class="grey-text text-lighten-3" target="blank">Medi Care</a></li>
+              <li><a class="grey-text text-lighten-3" target="blank">LinkedIn</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+          <small>&copy; 2021 <strong>Medi Care</strong></small>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

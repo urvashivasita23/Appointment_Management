@@ -1,0 +1,14 @@
+<h4>Doctor Information</h4>
+
+<b>Fullname: </b><%= @doctor.fullname %><br>
+<b>Specialty: </b><%= @doctor.specialty %><br>
+<b>Registration_no: </b><%= @doctor.reg_no %><br>
+
+    <%= link_to "Full Doctor's Profile and Patient Lists", doctor_user_path(@doctor.user), class: "waves-effect waves-light btn" %>
+    <% end %>
+
+<br><br>
+
+<%= link_to "Back to Doctors List", doctors_path, class: "waves-effect waves-light btn" %>
+
+<br>

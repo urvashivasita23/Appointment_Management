@@ -1,0 +1,62 @@
+<h4>Doctors</h4>
+<h5>Filter doctors by specialty:</h5>
+
+<div>
+    <%= form_tag("/doctors", method: "get") do %>
+<select name="specialty" id="specialty">
+<option value="MS">MS</option>
+<option value="MD">MD</option>
+<option value="Dentist">Dentist</option>
+<option value="Physiotherapist">Physiotherapist</option>
+</select>
+        <br>
+        <%= submit_tag "Filter", class: "waves-effect waves-light btn" %>
+    <% end %>
+</div>
+<br>
+
+<% @doctors.order(specialty: :asc).each do |doctor| %>
+    <div>
+        <i><%= doctor.specialty %></i> | <strong><%= link_to "#{ doctor.fullname }", doctor_path(doctor) %></strong>
+    </div>
+<% end %>
+
+<br><br><br>
+<h5>Search Doctor By First Name</h5>
+<div>
+    <%= form_tag doctors_path, :method => 'get' do %>
+        <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "Search" %>
+    <% end %>
+</div>
+    <table class="highlight">
+        <thead>
+        <tr> <th> Name </th> </tr>
+        </thead>
+          <% @users.each do |user| %>
+        <tbody>    
+            <td> <%= user.firstname %> </td>   
+        </tbody>
+          <% end %>
+    </table>
+<%= paginate @users %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br><br><br>
+<script>
+    $(document).ready(function() {
+        $('select').material_select();
+    });
+</script>

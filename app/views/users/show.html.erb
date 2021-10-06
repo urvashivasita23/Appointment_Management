@@ -1,0 +1,20 @@
+<h4>User Profile</h4>
+<b>Fullname: </b><%= @user.fullname %><br>
+<b>Username: </b><%= @user.username %><br>
+<b>Email: </b><%= @user.email %><br>
+<br>
+<% if @user.admin == true %>
+    <i>You are an admin</i>
+    <% elsif @user.admin == false && current_doctor %>
+       <i>You are a doctor</i>
+    <% else %>
+        <i>You are a patient</i>
+<% end %>
+
+<br><br>
+
+<%= link_to "Edit Profile", edit_user_path(@user), class: "waves-effect waves-light btn" %>
+
+<br><br>
+
+<%= button_to "Delete User", @user, method: :delete, data: {confirm: "Are you sure?"}, class: "waves-effect waves-light btn" %>

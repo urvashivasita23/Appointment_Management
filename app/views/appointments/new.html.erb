@@ -1,0 +1,27 @@
+<%= render partial: '/errors', locals: { record: @appointment } %>
+
+<%= form_with(model: [:patient, @appointment], local: true) do |f| %>
+    <%= f.hidden_field :patient_id, value: current_patient.id %>
+
+    <div>
+        <%= f.label :doctor_fullname, "Available In-Network Doctors" %>
+        <%= f.collection_select :doctor_id, @doctors, :id, :fullname, prompt: 'Please select' %>
+    </div>
+
+    <div>
+        <%= f.label :appointment, "Appointment schedule preference" %>
+        <%= f.datetime_field :appointment, min: DateTime.now.beginning_of_day %>
+    </div>
+
+    <br>
+
+    <div>
+        <%= f.submit "Schedule this Appointment", class: "waves-effect waves-light btn" %>
+    </div>
+<% end %>
+
+<script>
+    $(document).ready(function() {
+        $('select').material_select();
+    });
+</script>

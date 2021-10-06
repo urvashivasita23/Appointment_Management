@@ -1,0 +1,48 @@
+<h4>Welcome, <%= @patient.fullname %></h4>
+
+<div class="col s12 m7">
+  <div class="card horizontal">   
+      <div class="card-content">
+      </div>
+  </div>
+</div>
+
+<p><strong>Medi Care</strong></p>
+
+<%= link_to "Schedule an Appointment", select_specialty_path, class: "waves-effect waves-light btn" %> 
+
+<br><br>
+
+<div class="row">
+  <div class="col s12 m4 l4">
+    
+    <h5>Your Appointments</h5>
+
+    <% twolatest_careteams(@patient).each do |care_team| %>
+      <div class="card blue lighten-5">
+        <div class="card-content black-text">
+          <span class="card-title truncate"><%= care_team.doctor.specialty %></span>
+        </div>
+        <div class="card-action">
+          <%= care_team.doctor.fullname %>
+        </div>
+      </div>
+    <% end %>
+
+    <%= link_to "View All", patient_appointments_path(current_patient, current_patient.appointments), class: "waves-effect waves-light btn" %> 
+
+    <br><br>
+  </div>
+  <div class="col s12 m8 l8">
+    <%= month_calendar(events: @patient.appointments) do |date, appointments| %>
+      <%= date.day %>
+
+      <% appointments.each do |appt| %>
+        <div>
+          <strong><%= time(appt.appointment) %></strong><br>
+          <%= appt.doctor.fullname %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

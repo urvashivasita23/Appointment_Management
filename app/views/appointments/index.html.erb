@@ -1,0 +1,17 @@
+<h4>My Appointment</h4>
+
+<div class="row">
+    <div class="col s12 cards-container">
+        <% @appointments.each do |appointment| %>
+            <div class="card blue lighten-5">
+                <div class="card-content black-text">
+                    <span class="card-title"><%= link_to "#{appointment.doctor_fullname}", patient_appointment_path(@patient, appointment) %></span>
+                    <p class="truncate"><%= date_time(appointment.appointment) %></p>
+                </div>
+                <div class="card-action">
+                    <%=appointment.doctor_specialty %>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

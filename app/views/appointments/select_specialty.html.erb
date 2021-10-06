@@ -1,0 +1,29 @@
+<%= form_with url: new_patient_appointment_path(current_patient, @appointment), method: "post", local: true do |f| %>
+    <%= f.label :specialty, "Please specify Doctor's Specialty" %>
+    <%
+=begin%>
+ <div>
+        <%= f.collection_select :specialty, Doctor.specialties, :specialty, :specialty, prompt: 'Please select', include_blank: false %>
+    </div> 
+<%
+=end%>
+
+<select name="specialty" id="specialty">
+    <option value="MS">MS</option>
+    <option value="MD">MD</option>
+    <option value="Dentist">Dentist</option>
+    <option value="Physiotherapist">Physiotherapist</option>
+  </select>
+
+    <br>
+
+    <div>
+        <%= f.submit "Next", class: "waves-effect waves-light btn" %>
+    </div>
+<% end %>
+
+<script>
+    $(document).ready(function() {
+        $('select').material_select();
+    });
+</script>

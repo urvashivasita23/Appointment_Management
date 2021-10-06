@@ -1,0 +1,57 @@
+<h4>Edit User Profile</h4>
+
+<%= render partial: '/errors', locals: { record: @user } %>
+
+<%= form_with model: [@user], local: true do |f| %>
+    <div>
+        <%= f.label :firstname, "First Name" %>
+        <%= f.text_field :firstname %>
+    </div>
+
+    <div>
+        <%= f.label :lastname, "Last Name" %>
+        <%= f.text_field :lastname %>
+    </div>
+
+    <div>
+        <%= f.label :username %>
+        <%= f.text_field :username %>
+    </div>
+
+    <div>
+        <%= f.label :email %>
+        <%= f.email_field :email %>
+    </div>
+
+    <div>
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+    </div>
+
+    <div>
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation %>
+    </div>
+
+    <br>
+
+    <div>
+        <input type="checkbox" id="test5" name="admin" />
+        <label for="test5">Is this user an admin?</label>
+    </div>
+
+    <br>
+    User Information was created at <%= date_and_time(@user.created_at) %><br>
+    User Information was updated at <%= date_and_time(@user.updated_at) %><br>
+    <br>
+    
+    <div>
+        <%= f.submit "Update User", class: "waves-effect waves-light btn" %>
+    </div>
+<% end %>
+
+<br>
+
+<%= link_to "Back to User's Profile", doctor_user_path(@user), class: "waves-effect waves-light btn" %>
+
+<br><br>
